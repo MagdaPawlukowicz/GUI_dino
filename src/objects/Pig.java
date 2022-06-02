@@ -29,8 +29,7 @@ public class Pig extends Enemy {
 
     @Override
     public boolean isAwayOfScreen() {
-        boolean isAway = pigX + pigImage.getWidth() < 0;
-        return isAway;
+        return pigX + pigImage.getWidth() < 0;
     }
 
     public void draw(Graphics g) {

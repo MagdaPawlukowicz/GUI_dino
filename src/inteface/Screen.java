@@ -138,7 +138,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                 saveScore(this.score);
                 break;
         }
-//        Toolkit.getDefaultToolkit().sync();
+        Toolkit.getDefaultToolkit().sync(); //  synchronizacja aby obraz był płynniejszy
     }
 
     @Override

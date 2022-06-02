@@ -29,8 +29,7 @@ public class Fruit extends Enemy{
 
     @Override
     public boolean isAwayOfScreen() {
-        boolean isAway = fruitX + fruitImage.getWidth() < 0;
-        return isAway;
+        return fruitX + fruitImage.getWidth() < 0;
     }
 
     public void draw(Graphics g) {
