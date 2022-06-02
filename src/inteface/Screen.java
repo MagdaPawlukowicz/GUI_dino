@@ -25,6 +25,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
     private BufferedImage gameOverImage = Resource.getResourceImage("img/game_over.png");
     private BufferedImage startGameImage = Resource.getResourceImage("img/start.png");
     private long previousTime;
+    private long lastTime;
     private int score;
     private int highestScore;
     private String pathHighestScore = "C:\\Users\\Madzia\\IdeaProjects\\s24242_dino\\img\\highestScore.txt";
@@ -38,6 +39,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
         cat.setY(200);
         cat.setX(40);
         enemiesControl = new EnemiesControl(cat, this);
+        this.lastTime = System.currentTimeMillis();
     }
 
     public void startGame() {
@@ -50,7 +52,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
             try {
                 update();
                 repaint();
-                Thread.sleep(6);
+                Thread.sleep(4);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -98,11 +100,22 @@ public class Screen extends JPanel implements Runnable, KeyListener {
 
     public void update() {
         switch (gameState) {
+            case GAME_START_STATE:
+                enemiesControl.restart();
+                cat.setAlive(true);
+                setScore(0);
+                getHighestScore();
             case GAME_PLAY_STATE:
+                if (cat.getIsAlive() == false) {
+                    gameState = GAME_OVER_STATE;
+                }
                 cat.update();
                 enemiesControl.update();
+                scoreInc(250);
                 break;
             case GAME_OVER_STATE:
+                getHighestScore();
+                saveScore(this.score);
                 break;
         }
     }
@@ -116,26 +129,16 @@ public class Screen extends JPanel implements Runnable, KeyListener {
         cat.draw(g);
         switch (gameState) {
             case GAME_START_STATE:
-                enemiesControl.restart();
-                cat.setAlive(true);
-                setScore(0);
-                getHighestScore();
                 g.drawImage(startGameImage, 100, 130, null);
                 break;
             case GAME_PLAY_STATE:
                 enemiesControl.draw(g);
-                if (cat.getIsAlive() == false) {
-                    gameState = GAME_OVER_STATE;
-                }
                 g.drawString("SCORE: " + this.score, 500, 30);
                 g.drawString("HI: " + highestScore, 300, 30);
-                scoreInc(250);
                 break;
             case GAME_OVER_STATE:
                 enemiesControl.draw(g);
                 g.drawImage(gameOverImage, 110, 40, null);
-                getHighestScore();
-                saveScore(this.score);
                 break;
         }
         Toolkit.getDefaultToolkit().sync(); //  synchronizacja aby obraz był płynniejszy
@@ -155,6 +158,9 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                 }
                 if (gameState == GAME_OVER_STATE) {
                     gameState = GAME_START_STATE;
+                }
+                if (gameState == GAME_PLAY_STATE) {
+                    cat.jump();
                 }
                 break;
             case KeyEvent.VK_UP:

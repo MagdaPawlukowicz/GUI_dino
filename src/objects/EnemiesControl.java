@@ -77,13 +77,13 @@ public class EnemiesControl {
     private Enemy myRandomEnemy(){
         int randomNumb = (int) (Math.random()*8);
         switch (randomNumb){
-            case 0: return new Fruit(apple,catPixel);
-            case 1: return new Fruit(banana, catPixel);
-            case 2: return new Fruit(cherry, catPixel);
-            case 3: return new Fruit(lemon, catPixel);
-            case 4: return new Fruit(orange, catPixel);
-            case 5: return new Fruit(pear, catPixel);
-            default: return new Pig(pig, catPixel);
+            case 0: return new Fruit(apple);
+            case 1: return new Fruit(banana);
+            case 2: return new Fruit(cherry);
+            case 3: return new Fruit(lemon);
+            case 4: return new Fruit(orange);
+            case 5: return new Fruit(pear);
+            default: return new Pig(pig);
         }
     }
 }

@@ -6,12 +6,10 @@ public class Fruit extends Enemy{
     private int fruitX;
     private int fruitY;
     private BufferedImage fruitImage;
-    private CatPixel catPixel;
     private Rectangle rect;
-    private boolean isScoreTaken;
 
-    public Fruit(BufferedImage image, CatPixel pixel){
-        this.catPixel = pixel;
+
+    public Fruit(BufferedImage image){
         this.fruitImage = image;
         fruitX =600;
         fruitY=250;
