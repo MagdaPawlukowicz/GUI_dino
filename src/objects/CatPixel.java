@@ -1,4 +1,5 @@
 package objects;
+
 import recources.Animation;
 import recources.Resource;
 
@@ -10,14 +11,14 @@ import static inteface.Screen.GRAVITY;
 import static inteface.Screen.GROUNDY;
 
 public class CatPixel {
-    private float x= 0;
-    private float y= 0;
+    private float x = 0;
+    private float y = 0;
     private float speedY = 0;
     private Animation catMove;
     Rectangle catRect;
     private boolean isAlive = true;
 
-    public CatPixel(){
+    public CatPixel() {
         catMove = new Animation(300);
         catMove.addFrame(Resource.getResourceImage("img/cat.png"));
         catMove.addFrame(Resource.getResourceImage("img/cat2.png"));
@@ -26,13 +27,13 @@ public class CatPixel {
 
     }
 
-    public Rectangle getBound(){
+    public Rectangle getBound() {
         return catRect;
     }
 
-    public void update(){
+    public void update() {
         catMove.update();
-        if (y>= GROUNDY - catMove.getFrame().getHeight()){
+        if (y >= GROUNDY - catMove.getFrame().getHeight()) {
             speedY = 0;
             y = GROUNDY - catMove.getFrame().getHeight();
         } else {
@@ -45,21 +46,21 @@ public class CatPixel {
         catRect.height = catMove.getFrame().getHeight();
     }
 
-    public void draw(Graphics g){
+    public void draw(Graphics g) {
         g.drawImage(catMove.getFrame(), (int) x, (int) y, null);
 
     }
 
-    public void jump(){
-        if(speedY != 0) {
-        }else {
+    public void jump() {
+        if (speedY != 0) {
+        } else {
             speedY = -6; //wysokosc skoku
             y += speedY;
         }
     }
 
-    public void hide(){
-       catMove.setFrame(2);
+    public void hide() {
+        catMove.setFrame(2);
     }
 
     public float getX() {

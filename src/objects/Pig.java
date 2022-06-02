@@ -14,7 +14,7 @@ public class Pig extends Enemy {
         this.catPixel = catPixel;
         this.pigImage = image;
         pigX = 600;
-        pigY= (int) (Math.random() * 60) + 200;
+        pigY = (int) (Math.random() * 60) + 200;
         rect = new Rectangle();
         rect.intersects(rect);
     }

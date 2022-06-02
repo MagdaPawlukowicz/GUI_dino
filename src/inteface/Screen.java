@@ -1,7 +1,9 @@
 package inteface;
+
 import objects.CatPixel;
 import objects.EnemiesControl;
 import recources.Resource;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -35,7 +37,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
         cat = new CatPixel();
         cat.setY(200);
         cat.setX(40);
-        enemiesControl = new EnemiesControl(cat,this);
+        enemiesControl = new EnemiesControl(cat, this);
     }
 
     public void startGame() {
@@ -44,7 +46,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
 
     @Override
     public void run() {
-        while(true){
+        while (true) {
             try {
                 update();
                 repaint();
@@ -55,16 +57,16 @@ public class Screen extends JPanel implements Runnable, KeyListener {
         }
     }
 
-    public void scoreInc(long deltaTime){
-        if((System.currentTimeMillis() - previousTime) > deltaTime) {
+    public void scoreInc(long deltaTime) {
+        if ((System.currentTimeMillis() - previousTime) > deltaTime) {
             previousTime = System.currentTimeMillis();
-            this.score +=1;
+            this.score += 1;
         }
     }
 
     public void saveScore(int score) {
         this.score = score;
-        if (score >= getHighestScore() ) {
+        if (score >= getHighestScore()) {
             try {
                 highestScore = score;
                 writer = new BufferedWriter(new FileWriter(pathHighestScore));
@@ -76,7 +78,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
         }
     }
 
-    public void setScore (int score) {
+    public void setScore(int score) {
         this.score = score;
     }
 
@@ -110,9 +112,9 @@ public class Screen extends JPanel implements Runnable, KeyListener {
     public void paint(Graphics g) {
         super.paint(g);
         g.setColor(Color.BLACK);
-        g.drawLine(0,(int)GROUNDY, getWidth(),(int)GROUNDY);
+        g.drawLine(0, (int) GROUNDY, getWidth(), (int) GROUNDY);
         cat.draw(g);
-        switch (gameState){
+        switch (gameState) {
             case GAME_START_STATE:
                 enemiesControl.restart();
                 cat.setAlive(true);
@@ -122,10 +124,10 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                 break;
             case GAME_PLAY_STATE:
                 enemiesControl.draw(g);
-                if(cat.getIsAlive() == false){
-                gameState = GAME_OVER_STATE;
+                if (cat.getIsAlive() == false) {
+                    gameState = GAME_OVER_STATE;
                 }
-                g.drawString("SCORE: " + this.score, 500,30);
+                g.drawString("SCORE: " + this.score, 500, 30);
                 g.drawString("HI: " + highestScore, 300, 30);
                 scoreInc(250);
                 break;
@@ -151,7 +153,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                 if (gameState == GAME_START_STATE) {
                     gameState = GAME_PLAY_STATE;
                 }
-                if (gameState == GAME_OVER_STATE){
+                if (gameState == GAME_OVER_STATE) {
                     gameState = GAME_START_STATE;
                 }
                 break;
@@ -170,8 +172,8 @@ public class Screen extends JPanel implements Runnable, KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-            if (KeyEvent.VK_DOWN == e.getKeyCode()) {
-                    cat.rise();
-            }
+        if (KeyEvent.VK_DOWN == e.getKeyCode()) {
+            cat.rise();
         }
     }
+}

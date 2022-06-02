@@ -10,13 +10,13 @@ public class Animation {
     private long deltaTime;
     private long previousTime;
 
-    public Animation(int deltaTime){
+    public Animation(int deltaTime) {
         this.deltaTime = deltaTime;
         frames = new ArrayList<BufferedImage>();
     }
 
-    public void update(){
-        if((System.currentTimeMillis() - previousTime) > deltaTime && catIsnNotHide()) {
+    public void update() {
+        if ((System.currentTimeMillis() - previousTime) > deltaTime && catIsnNotHide()) {
             frameIndex++;
             frameIndex = frameIndex % 2;
             previousTime = System.currentTimeMillis();
@@ -27,18 +27,18 @@ public class Animation {
         return frameIndex != 2;
     }
 
-    public void addFrame (BufferedImage frame){
+    public void addFrame(BufferedImage frame) {
         frames.add(frame);
     }
 
-    public  BufferedImage getFrame(){
-        if(frames.size()>0){
+    public BufferedImage getFrame() {
+        if (frames.size() > 0) {
             return frames.get(frameIndex);
         }
         return null;
     }
 
-    public void setFrame (int frameIndex){
+    public void setFrame(int frameIndex) {
         this.frameIndex = frameIndex;
     }
 

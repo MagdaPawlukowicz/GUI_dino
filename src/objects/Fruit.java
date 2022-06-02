@@ -33,9 +33,10 @@ public class Fruit extends Enemy{
         return isAway;
     }
 
-    public void draw(Graphics g){
-        g.drawImage(fruitImage, fruitX, fruitY,null);
+    public void draw(Graphics g) {
+        g.drawImage(fruitImage, fruitX, fruitY, null);
     }
+
     @Override
     public Rectangle getCollision() {
         return rect;
