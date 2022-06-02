@@ -24,7 +24,6 @@ public class CatPixel {
         catMove.addFrame(Resource.getResourceImage("img/cat2.png"));
         catMove.addFrame(Resource.getResourceImage("img/cat_hide.png"));
         catRect = new Rectangle();
-
     }
 
     public Rectangle getBound() {
@@ -63,28 +62,12 @@ public class CatPixel {
         catMove.setFrame(2);
     }
 
-    public float getX() {
-        return x;
-    }
-
     public void setX(float x) {
         this.x = x;
     }
 
-    public float getY() {
-        return y;
-    }
-
     public void setY(float y) {
         this.y = y;
-    }
-
-    public float getSpeedY() {
-        return speedY;
-    }
-
-    public void setSpeedY(float speedY) {
-        this.speedY = speedY;
     }
 
     public boolean getIsAlive() {

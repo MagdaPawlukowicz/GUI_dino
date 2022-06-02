@@ -25,7 +25,6 @@ public class Screen extends JPanel implements Runnable, KeyListener {
     private BufferedImage gameOverImage = Resource.getResourceImage("img/game_over.png");
     private BufferedImage startGameImage = Resource.getResourceImage("img/start.png");
     private long previousTime;
-    private long lastTime;
     private int score;
     private int highestScore;
     private String pathHighestScore = "C:\\Users\\Madzia\\IdeaProjects\\s24242_dino\\img\\highestScore.txt";
@@ -39,7 +38,6 @@ public class Screen extends JPanel implements Runnable, KeyListener {
         cat.setY(200);
         cat.setX(40);
         enemiesControl = new EnemiesControl(cat, this);
-        this.lastTime = System.currentTimeMillis();
     }
 
     public void startGame() {
@@ -124,8 +122,8 @@ public class Screen extends JPanel implements Runnable, KeyListener {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        g.setColor(Color.BLACK);
-        g.drawLine(0, (int) GROUNDY, getWidth(), (int) GROUNDY);
+        g.setColor(Color.GRAY);
+        g.fillRect(0,(int) GROUNDY, getWidth(), (int) GROUNDY);
         cat.draw(g);
         switch (gameState) {
             case GAME_START_STATE:

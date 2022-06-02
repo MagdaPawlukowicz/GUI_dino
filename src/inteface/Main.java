@@ -1,10 +1,9 @@
 package inteface;
 
 import javax.swing.*;
-import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Window window = new Window();
         SwingUtilities.invokeLater(() -> window.startGame());
     }

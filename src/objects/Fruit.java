@@ -39,28 +39,4 @@ public class Fruit extends Enemy{
         return rect;
     }
 
-    public int getFruitX() {
-        return fruitX;
-    }
-
-    public void setFruitX(int fruitX) {
-        this.fruitX = fruitX;
-    }
-
-    public int getFruitY() {
-        return fruitY;
-    }
-
-    public void setFruitY(int fruitY) {
-        this.fruitY = fruitY;
-    }
-
-    public BufferedImage getFruitImage() {
-        return fruitImage;
-    }
-
-    public void setFruitImage(BufferedImage fruitImage) {
-        this.fruitImage = fruitImage;
-
-    }
 }

@@ -1,12 +1,11 @@
 package inteface;
 import javax.swing.*;
-import java.io.IOException;
 
 public class Window extends JFrame {
 
     private Screen screen;
 
-    Window() throws IOException {
+    Window() {
         this.setTitle("Cat Run Game");
         this.setSize(600,500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
