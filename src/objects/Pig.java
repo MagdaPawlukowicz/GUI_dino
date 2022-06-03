@@ -1,15 +1,16 @@
 package objects;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Pig extends Enemy {
     private int pigX;
     private int pigY;
-    private BufferedImage pigImage;
+    private ImageIcon pigImage;
     private Rectangle rect;
 
-    public Pig(BufferedImage image) {
+    public Pig(ImageIcon image) {
         this.pigImage = image;
         pigX = 600;
         pigY = 220 - (int)(Math.random() * 100);
@@ -21,17 +22,17 @@ public class Pig extends Enemy {
         pigX -= 2;
         rect.x = pigX;
         rect.y = pigY;
-        rect.width = pigImage.getWidth();
-        rect.height = pigImage.getHeight();
+        rect.width = pigImage.getIconWidth();
+        rect.height = pigImage.getIconHeight();
     }
 
     @Override
     public boolean isAwayOfScreen() {
-        return pigX + pigImage.getWidth() < 0;
+        return pigX + pigImage.getIconWidth() < 0;
     }
 
     public void draw(Graphics g) {
-        g.drawImage(pigImage, pigX, pigY, null);
+        g.drawImage(pigImage.getImage(), pigX, pigY, null);
     }
 
     @Override

@@ -20,9 +20,9 @@ public class CatPixel {
 
     public CatPixel() {
         catMove = new Animation(300);
-        catMove.addFrame(Resource.getResourceImage("img/cat.png"));
-        catMove.addFrame(Resource.getResourceImage("img/cat2.png"));
-        catMove.addFrame(Resource.getResourceImage("img/cat_hide.png"));
+        catMove.addFrame(new ImageIcon(this.getClass().getResource("/img/cat.png")));
+        catMove.addFrame(new ImageIcon(this.getClass().getResource("/img/cat2.png")));
+        catMove.addFrame(new ImageIcon(this.getClass().getResource("/img/cat_hide.png")));
         catRect = new Rectangle();
     }
 
@@ -32,21 +32,21 @@ public class CatPixel {
 
     public void update() {
         catMove.update();
-        if (y >= GROUNDY - catMove.getFrame().getHeight()) {
+        if (y >= GROUNDY - catMove.getFrame().getIconHeight()) {
             speedY = 0;
-            y = GROUNDY - catMove.getFrame().getHeight();
+            y = GROUNDY - catMove.getFrame().getIconHeight();
         } else {
             speedY += GRAVITY; //gravity powoduje że obiekt zawsze spada
             y += speedY;
         }
         catRect.x = (int) x;
         catRect.y = (int) y;
-        catRect.width = catMove.getFrame().getWidth();
-        catRect.height = catMove.getFrame().getHeight();
+        catRect.width = catMove.getFrame().getIconWidth();
+        catRect.height = catMove.getFrame().getIconHeight();
     }
 
     public void draw(Graphics g) {
-        g.drawImage(catMove.getFrame(), (int) x, (int) y, null);
+        g.drawImage(catMove.getFrame().getImage(), (int) x, (int) y, null);
 
     }
 

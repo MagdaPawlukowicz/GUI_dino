@@ -3,7 +3,6 @@ package inteface;
 import objects.CatPixel;
 import objects.EnemiesControl;
 import recources.Resource;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -39,6 +38,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
         cat.setX(40);
         enemiesControl = new EnemiesControl(cat, this);
     }
+
 
     public void startGame() {
         thread.start();

@@ -1,15 +1,15 @@
 package objects;
+import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class Fruit extends Enemy{
     private int fruitX;
     private int fruitY;
-    private BufferedImage fruitImage;
+    private ImageIcon fruitImage;
     private Rectangle rect;
 
 
-    public Fruit(BufferedImage image){
+    public Fruit(ImageIcon image){
         this.fruitImage = image;
         fruitX =600;
         fruitY=250;
@@ -21,17 +21,17 @@ public class Fruit extends Enemy{
         fruitX -=2;
         rect.x = fruitX;
         rect.y = fruitY;
-        rect.width = fruitImage.getWidth();
-        rect.height = fruitImage.getHeight();
+        rect.width = fruitImage.getIconWidth();
+        rect.height = fruitImage.getIconHeight();
     }
 
     @Override
     public boolean isAwayOfScreen() {
-        return fruitX + fruitImage.getWidth() < 0;
+        return fruitX + fruitImage.getIconWidth() < 0;
     }
 
     public void draw(Graphics g) {
-        g.drawImage(fruitImage, fruitX, fruitY, null);
+        g.drawImage(fruitImage.getImage(), fruitX, fruitY, null);
     }
 
     @Override
