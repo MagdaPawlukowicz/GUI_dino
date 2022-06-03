@@ -17,13 +17,13 @@ public class EnemiesControl {
         this.catPixel = catPixel;
         this.screen = gameScreen;
         enemies = new LinkedList<>();
-        apple = new ImageIcon(this.getClass().getResource("/img/apple.png"));
-        banana = new ImageIcon(this.getClass().getResource("/img/banana.png"));
-        cherry = new ImageIcon(this.getClass().getResource("/img/cherry.png"));
-        lemon = new ImageIcon(this.getClass().getResource("/img/lemon.png"));
-        orange = new ImageIcon(this.getClass().getResource("/img/orange.png"));
-        pear = new ImageIcon(this.getClass().getResource("/img/pear.png"));
-        pig = new ImageIcon(this.getClass().getResource("/img/pig.png"));
+        apple = new ImageIcon(this.getClass().getResource("/assets/apple.png"));
+        banana = new ImageIcon(this.getClass().getResource("/assets/banana.png"));
+        cherry = new ImageIcon(this.getClass().getResource("/assets/cherry.png"));
+        lemon = new ImageIcon(this.getClass().getResource("/assets/lemon.png"));
+        orange = new ImageIcon(this.getClass().getResource("/assets/orange.png"));
+        pear = new ImageIcon(this.getClass().getResource("/assets/pear.png"));
+        pig = new ImageIcon(this.getClass().getResource("/assets/pig.png"));
     }
 
     public void update(){

@@ -16,9 +16,9 @@ public class CatPixel {
 
     public CatPixel() {
         catMove = new Animation(300);
-        catMove.addFrame(new ImageIcon(this.getClass().getResource("/img/cat.png")));
-        catMove.addFrame(new ImageIcon(this.getClass().getResource("/img/cat2.png")));
-        catMove.addFrame(new ImageIcon(this.getClass().getResource("/img/cat_hide.png")));
+        catMove.addFrame(new ImageIcon(this.getClass().getResource("/assets/cat.png")));
+        catMove.addFrame(new ImageIcon(this.getClass().getResource("/assets/cat2.png")));
+        catMove.addFrame(new ImageIcon(this.getClass().getResource("/assets/cat_hide.png")));
         catRect = new Rectangle();
     }
 

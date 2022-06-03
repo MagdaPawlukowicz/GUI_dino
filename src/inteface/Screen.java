@@ -2,12 +2,11 @@ package inteface;
 
 import objects.CatPixel;
 import objects.EnemiesControl;
-import recources.Resource;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
 import java.io.*;
 
 public class Screen extends JPanel implements Runnable, KeyListener {
@@ -21,12 +20,12 @@ public class Screen extends JPanel implements Runnable, KeyListener {
     private Thread thread;
     private EnemiesControl enemiesControl;
     private int gameState = 0;
-    private BufferedImage gameOverImage = Resource.getResourceImage("img/game_over.png");
-    private BufferedImage startGameImage = Resource.getResourceImage("img/start.png");
+    private ImageIcon gameOverImage = new ImageIcon(this.getClass().getResource("/assets/game_over.png"));
+    private ImageIcon startGameImage = new ImageIcon(this.getClass().getResource("/assets/start.png"));
     private long previousTime;
     private int score;
     private int highestScore;
-    private String pathHighestScore = "C:\\Users\\Madzia\\IdeaProjects\\s24242_dino\\img\\highestScore.txt";
+    private String pathHighestScore = "store/highestScore.txt";
     private BufferedWriter writer;
     private BufferedReader reader;
 
@@ -127,7 +126,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
         cat.draw(g);
         switch (gameState) {
             case GAME_START_STATE:
-                g.drawImage(startGameImage, 100, 130, null);
+                g.drawImage(startGameImage.getImage(), 100, 130, null);
                 break;
             case GAME_PLAY_STATE:
                 enemiesControl.draw(g);
@@ -136,7 +135,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                 break;
             case GAME_OVER_STATE:
                 enemiesControl.draw(g);
-                g.drawImage(gameOverImage, 110, 40, null);
+                g.drawImage(gameOverImage.getImage(), 110, 40, null);
                 break;
         }
         Toolkit.getDefaultToolkit().sync(); //  synchronizacja aby obraz był płynniejszy
