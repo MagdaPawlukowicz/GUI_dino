@@ -1,11 +1,8 @@
 package objects;
 
 import inteface.Screen;
-import recources.Resource;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 import java.util.List;
 

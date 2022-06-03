@@ -1,12 +1,8 @@
 package objects;
 
 import recources.Animation;
-import recources.Resource;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-
 import static inteface.Screen.GRAVITY;
 import static inteface.Screen.GROUNDY;
 
